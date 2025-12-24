@@ -1,0 +1,169 @@
+/* Fontes carregadas via @fontsource no index.html para melhor performance */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 40% 5%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 35% 8%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 35% 8%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 142 72% 37%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 220 30% 12%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 25% 15%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 142 72% 37%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 18%;
+    --input: 220 25% 18%;
+    --ring: 142 72% 37%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --green-glow: 142 72% 45%;
+    --green-dark: 142 72% 25%;
+    --surface-elevated: 220 30% 10%;
+    --surface-glass: 220 30% 12%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(220 40% 5%) 0%, hsl(220 35% 8%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(142 72% 37%) 0%, hsl(142 72% 30%) 100%);
+    --gradient-cta-hover: linear-gradient(135deg, hsl(142 72% 42%) 0%, hsl(142 72% 35%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(220 35% 8%) 0%, hsl(220 40% 5%) 100%);
+    --gradient-green-section: linear-gradient(180deg, hsl(142 40% 12%) 0%, hsl(220 40% 5%) 100%);
+    --gradient-dark-section: linear-gradient(180deg, hsl(220 40% 3%) 0%, hsl(220 40% 5%) 100%);
+    
+    /* Shadows */
+    --shadow-cta: 0 8px 32px hsl(142 72% 37% / 0.35);
+    --shadow-cta-hover: 0 12px 48px hsl(142 72% 37% / 0.5);
+    --shadow-card: 0 4px 24px hsl(220 40% 2% / 0.5);
+    --shadow-glow: 0 0 60px hsl(142 72% 37% / 0.2);
+  }
+
+  .dark {
+    --background: 220 40% 5%;
+    --foreground: 210 20% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', system-ui, sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-cta {
+    @apply relative overflow-hidden px-8 py-4 text-lg font-semibold text-primary-foreground rounded-xl transition-all duration-150;
+    background: var(--gradient-cta);
+    box-shadow: var(--shadow-cta);
+  }
+
+  .btn-cta:hover {
+    background: var(--gradient-cta-hover);
+    box-shadow: var(--shadow-cta);
+  }
+
+  .btn-cta-secondary {
+    @apply relative overflow-hidden px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-150 border-2 border-primary text-primary;
+    background: transparent;
+  }
+
+  .btn-cta-secondary:hover {
+    @apply bg-primary/10;
+    box-shadow: var(--shadow-card);
+  }
+
+  .section-gradient {
+    background: var(--gradient-section);
+  }
+
+  .section-green-gradient {
+    background: var(--gradient-green-section);
+  }
+
+  .section-dark {
+    background: var(--gradient-dark-section);
+  }
+
+  .section-divider {
+    @apply relative;
+  }
+
+  .section-divider::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent);
+  }
+
+  .card-elevated {
+    @apply rounded-xl border border-border;
+    background: hsl(var(--surface-elevated));
+    box-shadow: var(--shadow-card);
+  }
+
+  .text-gradient-green {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(142 72% 45%) 0%, hsl(142 72% 55%) 100%);
+  }
+
+  .grass-texture {
+    background-image: 
+      radial-gradient(ellipse at 50% 0%, hsl(142 40% 15% / 0.3) 0%, transparent 50%),
+      linear-gradient(180deg, hsl(220 40% 5%) 0%, hsl(220 35% 7%) 100%);
+  }
+
+  .glow-green {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Floating CTA mobile spacing */
+  @media (max-width: 1023px) {
+    main {
+      padding-bottom: 100px;
+    }
+  }
+}
+
+@layer utilities {
+}
+
+/* Motion policy: only disable animations/transitions for users que pedem redução */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
